@@ -1,0 +1,15 @@
+* Luna Packages
+** Editing
+*** yasnippet（使用 yasnippet 自动生成有用的代码片段）
+    - 首先需要将代码片段下载到本地：
+      #+BEGIN_SRC sh
+        git clone https://github.com/AndreaCrotti/yasnippet-snippets.git ~/.emacs.d/yasnippet-snippets/
+      #+END_SRC
+    - 启用配置
+      #+BEGIN_SRC emacs-lisp
+        (luna-require-package 'yasnippet)
+        (require 'yasnippet)
+        (add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippet-snippets/snippets")
+        (yas-global-mode t)
+        (yas-reload-all)
+      #+END_SRC

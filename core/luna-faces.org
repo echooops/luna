@@ -1,0 +1,91 @@
+** Luna Faces
+   人活脸树活皮，emacs活配置。
+   #+BEGIN_SRC emacs-lisp
+     (require 'luna-package)
+   #+END_SRC
+*** 主题 - themes
+    #+BEGIN_SRC emacs-lisp
+      ;; zenburn 或者 monokai
+      (defcustom luna-theme 'monokai
+        "The default color theme, change this in your /personal/preload config."
+        :type 'symbol
+        :group 'luna)
+
+      ;; use zenburn as the default theme
+      (when luna-theme
+        (load-theme luna-theme t))
+    #+END_SRC
+*** 标题栏
+    #+BEGIN_SRC emacs-lisp
+      ;; more useful frame title, that show either a file or a
+      ;; buffer name (if the buffer isn't visiting a file)
+      (setq frame-title-format
+            '("" invocation-name " Luna - " (:eval (if (buffer-file-name)
+                               (abbreviate-file-name (buffer-file-name))
+                                                     "%b"))))
+    #+END_SRC
+*** 工具栏
+    #+BEGIN_SRC emacs-lisp
+      (when (fboundp 'tool-bar-mode)
+        (tool-bar-mode -1))
+    #+END_SRC
+*** 菜单栏
+    #+BEGIN_SRC emacs-lisp
+      (menu-bar-mode -1)
+    #+END_SRC
+*** 交互栏
+    - which-key (键绑定提示)
+      #+BEGIN_SRC emacs-lisp
+        ;; show available keybindings after you start typing
+        (luna-require-package 'which-key)
+        (require 'which-key)
+        (which-key-mode t)
+      #+END_SRC
+    - default
+    #+BEGIN_SRC emacs-lisp
+      ;; enable y/n answers
+      (fset 'yes-or-no-p 'y-or-n-p)
+    #+END_SRC
+
+
+*** 光标
+    - beacon (当移动到一个新窗口时候提示光标位置）
+      #+BEGIN_SRC emacs-lisp
+        ;; show the cursor when moving after big movements in the window
+        (luna-require-package 'beacon)
+        (require 'beacon)
+        (beacon-mode t)
+      #+END_SRC
+    - default
+      #+BEGIN_SRC emacs-lisp
+        ;; the blinking cursor is nothing, but an annoyance
+        (blink-cursor-mode -1)
+      #+END_SRC
+*** 滚动条
+    #+BEGIN_SRC emacs-lisp
+      ;; nice scrolling
+      (setq scroll-margin 0
+            scroll-conservatively 100000
+            scroll-preserve-screen-position 1)
+    #+END_SRC
+*** 行号
+    #+BEGIN_SRC emacs-lisp
+      ;; mode line settings
+      (line-number-mode t)
+      (column-number-mode t)
+      (size-indication-mode t)
+    #+END_SRC
+*** 其他
+    #+BEGIN_SRC emacs-lisp
+      ;; disable the annoying bell ring
+      (setq ring-bell-function 'ignore)
+      ;; disable startup screen
+      (setq inhibit-startup-screen t)
+    #+END_SRC
+
+
+
+
+
+
+

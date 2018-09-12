@@ -1,0 +1,79 @@
+* 
+** 使用指南
+   [[http://tuhdo.github.io/c-ide.html][Emacs Mini Manual]]
+** 目录结构
+   #+begin_src emacs-lisp
+     (defvar luna-core-dir (expand-file-name "core" luna-dir)
+       "The home of Luna's core functionality.")
+     (defvar luna-modules-dir (expand-file-name  "modules" luna-dir)
+       "This directory houses all of the built-in Luna modules.")
+   #+end_src
+** 读取文件
+   #+begin_src emacs-lisp
+     (defun luna-add-subfolders-to-load-path (parent-dir)
+       "Add all level PARENT-DIR subdirs to the `load-path'."
+       (dolist (f (directory-files parent-dir))
+	 (let ((name (expand-file-name f parent-dir)))
+	   (when (and (file-directory-p name)
+		      (not (string-prefix-p "." f)))
+	     (add-to-list 'load-path name)
+	     (luna-add-subfolders-to-load-path name)))))
+
+     ;;(add-to-list 'load-path luna-core-dir)
+     (add-to-list 'load-path luna-modules-dir)
+     (mapcar #'org-babel-load-file (directory-files luna-core-dir t ".*\.org"))
+   #+end_src
+
+** 核心配置 - core
+   - [[file:core/luna-core.org][Luna Core]]
+   - [[file:core/luna-packages.org][Luna Packages]]
+   - [[file:core/luna-editor.org][Luna Editor]]
+** 模块 - modules
+   - [[file:modules/luna-package.el][Luna Package]]
+     #+begin_src emacs-lisp
+       (require 'luna-package)
+     #+end_src
+   - [[file:modules/luna-helm.el][Luna Helm]]
+     #+begin_src emacs-lisp
+       (require 'luna-helm)
+     #+end_src
+   - [[file:modules/luna-org.el][Luna Org]]
+     #+begin_src emacs-lisp
+       (require 'luna-org)
+     #+end_src
+   - [[file:modules/luna-irony.el][Luna Irony]]
+     #+begin_src emacs-lisp
+       (require 'luna-irony)
+     #+end_src
+   - [[file:modules/luna-flycheck.el][Luna flycheck]]
+     #+begin_src emacs-lisp
+       (require 'luna-flycheck)
+     #+end_src
+   - [[file:modules/luna-company.el][Luna Company]]
+     #+begin_src emacs-lisp
+       (require 'luna-company)
+     #+end_src
+   - [[file:modules/luna-magit.el][Luna Magit]]
+     #+begin_src emacs-lisp
+       (require 'luna-magit)
+     #+end_src
+** 问题
+   - 使用aspell代替ispell
+     #+begin_src emacs-lisp
+       (setq-default ispell-program-name "aspell")
+       (setq exec-path (cons "/usr/local/bin" exec-path))
+     #+end_src
+   - 解决中文飞检问题
+     #+begin_src emacs-lisp
+       (ispell-change-dictionary "american" t)
+     #+end_src
+   - Irony
+     #+BEGIN_SRC sh
+       cmake -DLIBCLANG_INCLUDE_DIR=/usr/local/Cellar/llvm/6.0.1/include -DLIBCLANG_LIBRARY=/usr/local/Cellar/llvm/6.0.1/lib/libclang.dylib -DCMAKE_INSTALL_PREFIX\=/Users/echo/.emacs.d/irony/  /Users/echo/.emacs.d/elpa/irony-20180703.1740/server && cmake --build . --use-stderr --config Release --target install
+     #+END_SRC
+** 备忘
+   - load-file init.el 重新加载配置
+   - lisp-interaction-mode 中 C-j 直接可以计算表达式的值
+
+** 参考
+   - [[https://emacs-china.org][Emacs 中文网]]

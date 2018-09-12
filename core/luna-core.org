@@ -1,0 +1,57 @@
+* Luna Core
+  #+begin_src emacs-lisp
+    (provide 'luna-core)
+  #+end_src
+** keybindings
+   #+begin_src emacs-lisp
+     (global-set-key (kbd "<f3>") 'kmacro-start-macro-or-insert-counter)
+     ;; 增减字体大小
+     (global-set-key (kbd "C-+") 'text-scale-increase)
+     (global-set-key (kbd "C--") 'text-scale-decrease)
+     ;; Start proced in a similar manner to dired
+     (unless (eq system-type 'darwin)
+       (global-set-key (kbd "C-x p") 'proced))
+     ;; 整理代码
+     (global-set-key (kbd "C-x \\") 'align-regexp)
+     ;; bind "C-x C-b" to ibuffer command
+     (global-set-key (kbd "C-x C-b") 'ibuffer)
+     ;; replace dabbrev-expand
+     (global-set-key (kbd "M-/") 'hippie-expand)
+     ;; activate whitespace-mode to view all whitespace characters
+     (global-set-key (kbd "C-c w") 'whitespace-mode)
+     ;; easier window navigation 移动窗口
+     (windmove-default-keybindings)
+   #+end_src
+** Built-in mode
+   #+begin_src emacs-lisp
+     ;; update any change made on file to the current buffer
+     (global-auto-revert-mode t)
+     ;; HL line
+     (global-hl-line-mode t)
+   #+end_src
+** Variables
+   #+begin_src emacs-lisp
+     (setq
+      hippie-expand-try-functions-list
+      '(try-expand-dabbrev ;; Try to expand word "dynamically", searching the current buffer.
+        try-expand-dabbrev-all-buffers ;; Try to expand word "dynamically", searching all other buffers.
+        try-expand-dabbrev-from-kill ;; Try to expand word "dynamically", searching the kill ring.
+        try-complete-file-name-partially ;; Try to complete text as a file name, as many characters as unique.
+        try-complete-file-name ;; Try to complete text as a file name.
+        try-expand-all-abbrevs ;; Try to expand word before point according to all abbrev tables.
+        try-expand-list ;; Try to complete the current line to an entire line in the buffer.
+        try-expand-line ;; Try to complete the current line to an entire line in the buffer.
+        try-complete-lisp-symbol-partially ;; Try to complete as an Emacs Lisp symbol, as many characters as unique.
+        try-complete-lisp-symbol) ;; Try to complete word as an Emacs Lisp symbol.
+      )
+      ;; always display ibuffer in another window
+      (setq ibuffer-use-other-window t)
+   #+end_src
+** Hooks
+   #+begin_src emacs-lisp
+   #+end_src
+
+** Alias
+   #+begin_src emacs-lisp
+     (defalias 'yes-or-no-p 'y-or-n-p)
+   #+end_src
