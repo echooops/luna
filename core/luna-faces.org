@@ -71,7 +71,8 @@
 *** 行号
     #+BEGIN_SRC emacs-lisp
       ;; mode line settings
-      (line-number-mode t)
+      ;; (line-number-mode t)
+      (global-linum-mode t)
       (column-number-mode t)
       (size-indication-mode t)
     #+END_SRC

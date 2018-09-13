@@ -1,0 +1,29 @@
+* Luna Programming
+
+** 通用设置
+   - 自动补全括号
+     #+BEGIN_SRC emacs-lisp
+       (electric-pair-mode t)
+     #+END_SRC
+   - 按 Ctl-Enter 开始选中文本
+     #+BEGIN_SRC emacs-lisp
+       (global-set-key (kbd "C-<return>") 'set-mark-command)
+     #+END_SRC
+   - 设置代码风格
+     #+BEGIN_SRC emacs-lisp
+       (c-add-style "my-style"
+                    '("stroustrup"
+                      (indent-tabs-mode . nil)        ; 使用空格缩进而不是 Tab
+                      (c-basic-offset . 4)            ; 使用四个空格缩进
+                      (c-offsets-alist . ((inline-open . 0)
+                                          (brace-list-open . 0)
+                                          (statement-case-open . +)))))
+       (defun my-c++-mode-hook ()
+         (c-set-style "my-style")        ; use my-style defined above
+         (auto-fill-mode)
+         (c-toggle-auto-hungry-state 1))
+
+       (add-hook 'c++-mode-hook 'my-c++-mode-hook)
+       (add-hook 'c-mode-hook 'my-c++-mode-hook)
+     #+END_SRC
+

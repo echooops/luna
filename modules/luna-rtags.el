@@ -1,5 +1,5 @@
 ;; 启动 company 模式
-(provide 'luna-company)
+(provide 'luna-rtags)
 
 (luna-require-package 'company)
 (require 'company)
