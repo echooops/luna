@@ -1,4 +1,5 @@
 (require 'org)
+(luna-require-package 'rainbow-mode)
 
 (provide 'luna-org)
 

@@ -67,6 +67,12 @@
      #+begin_src emacs-lisp
        (require 'luna-c++)
      #+end_src
+** 序列化语言
+   - Luna Json
+     #+BEGIN_SRC emacs-lisp
+       (luna-require-package 'json-mode)
+       (require 'json-mode)
+     #+END_SRC
 ** 问题
    - 使用aspell代替ispell
      #+begin_src emacs-lisp
@@ -84,3 +90,4 @@
 ** 备忘
    - load-file init.el 重新加载配置
    - lisp-interaction-mode 中 C-j 直接可以计算表达式的值
+   - tab-space转换 tabify untabify
