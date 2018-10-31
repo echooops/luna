@@ -13,3 +13,10 @@
         (yas-global-mode t)
         (yas-reload-all)
       #+END_SRC
+*** undo-tree
+    - 启动配置
+      #+BEGIN_SRC emacs-lisp
+        (luna-require-package 'undo-tree)
+        (require 'undo-tree)
+        (global-undo-tree-mode t)
+      #+END_SRC

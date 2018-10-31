@@ -67,6 +67,11 @@
      #+begin_src emacs-lisp
        (require 'luna-c++)
      #+end_src
+   - [[file:modules/][Luna Plantuml]]
+     #+BEGIN_SRC emacs-lisp
+       (require 'luna-plantuml)
+     #+END_SRC
+
 ** 序列化语言
    - Luna Json
      #+BEGIN_SRC emacs-lisp
