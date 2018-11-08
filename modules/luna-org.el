@@ -40,6 +40,18 @@
 ;; Fix chinese font width and rescale
 (setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2) ("WenQuanYi Micro Hei Mono" . 1.2) ("STHeiti". 1.2)))
 
+;; pdflatex 环境变量设置 --- 暂时放到这里
+(setenv "PATH"
+        (concat
+         "/usr/local/texlive/2018/bin/x86_64-darwin" ":"
+         (getenv  "PATH")))
+(let ((mypaths
+       '("/usr/local/texlive/2018/bin/x86_64-darwin")))
+  (setq exec-path (append exec-path mypaths)))
+
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
+                              "xelatex -interaction nonstopmode %f"))
+
 ;; org-insert-src-block (插入代码块函数) 为了不用自己输入 #+BEGIN_SRC … #+END_SRC 这一段，我写了下面这个Elisp函数
 (defun org-insert-src-block (src-code-type)
   "Insert a 'SRC-CODE-TYPE type source code block in org-mode."

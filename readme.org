@@ -61,6 +61,14 @@
      #+begin_src emacs-lisp
        (require 'luna-magit)
      #+end_src
+   - [[file:modules/luna-company.el][Luna Company]]
+     #+BEGIN_SRC emacs-lisp
+       (require 'luna-company)
+     #+END_SRC
+   - [[file:modules/luna-python.el][Luna Python]]
+     #+BEGIN_SRC emacs-lisp
+       (require 'luna-python)
+     #+END_SRC
 
 ** 程序代码 - Programming
    - [[file:modules/luna-c++.el][Luna C++]]

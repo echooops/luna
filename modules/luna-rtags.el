@@ -1,10 +1,4 @@
-;; 启动 company 模式
 (provide 'luna-rtags)
-
-(luna-require-package 'company)
-(require 'company)
-(global-company-mode t)
-;;(add-hook 'after-init-hook 'global-company-mode)
 
 (luna-require-package 'rtags)
 (require 'rtags)

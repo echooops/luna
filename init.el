@@ -59,7 +59,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck-plantuml plantuml-mode undo-tree zenburn-theme yasnippet which-key rainbow-mode monokai-theme magit json-mode helm flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony beacon))))
+    (ein company-anaconda elpy org-latex async beacon company dash epl flycheck ghub git-commit graphql helm helm-core irony json-reformat json-snatcher magit magit-popup pkg-info popup rtags treepy with-editor yasnippet zenburn-theme plantuml-mode undo-tree which-key rainbow-mode monokai-theme json-mode flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

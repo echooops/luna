@@ -1,4 +1,5 @@
 (provide 'luna-c++)
+
 (luna-require-package 'flycheck)
 (require 'flycheck)
 
